@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class InvenUI : MonoBehaviour
 {
@@ -25,7 +21,7 @@ public class InvenUI : MonoBehaviour
 	public void PrintNameText()
 	{
 		//Debug.Log(itemText.Length);
-		for(int i = 0; i < itemText.Length; i++)
+		for (int i = 0; i < itemText.Length; i++)
 		{ // 0, 1, 2
 			Debug.Log(i);
 			Debug.Log(count);
