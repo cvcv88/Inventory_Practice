@@ -6,21 +6,23 @@ using static UnityEditor.Progress;
 public class Inventory : MonoBehaviour
 {
 	[SerializeField] InvenUI invenUI;
-	public Dictionary<string, int> items = new Dictionary<string, int>();
+	// public Dictionary<string, int> items = new Dictionary<string, int>();
+	public List<string> items = new List<string>();
 
 	// 아이템 추가
 	public void AddInven(string str)
 	{
 		if (!FindInven(str))
 		{
-			if (items.ContainsKey(str))
+			/*if (items.ContainsKey(str))
 			{
 				items.Add(str, 1);
 			}
 			else
 			{
 				items[str] += 1;
-			}
+			}*/
+			items.Add(str);
 			invenUI.PrintExplainText(str + "을(를) 인벤토리에 추가했습니다.");
 			invenUI.PrintNameText();
 		}
@@ -45,7 +47,7 @@ public class Inventory : MonoBehaviour
 
 	public bool FindInven(string str)
 	{
-		if (items.ContainsKey(str))
+		if (items.Contains(str))
 		{
 			invenUI.PrintExplainText(str + "이(가) 인벤토리에 존재합니다");
 			return true;
@@ -72,4 +74,5 @@ public class Inventory : MonoBehaviour
 			Debug.Log("- " + i);
 		}
 	}
+
 }

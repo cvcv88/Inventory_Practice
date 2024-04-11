@@ -9,6 +9,7 @@ public class NPC : MonoBehaviour
 	// [SerializeField] Inventory inven;
 	[SerializeField] Inventory inven;
 	[SerializeField] Item item;
+	[SerializeField] InvenUI invenUI;
 	GameObject checkPlayer;
 
 	private void Start()
@@ -17,22 +18,24 @@ public class NPC : MonoBehaviour
 	}
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.X) && checkPlayer != null)
+		if (Input.GetKeyDown(KeyCode.X))
 		{
 			CheckItem();
 		}
 	}
 
-	private void CheckItem()
+	private bool CheckItem()
 	{
-		if (inven.FindInven(checkPlayer.name))
+		if (inven.FindInven(item.name) && checkPlayer != null)
 		{
-			inven.RemoveInven(checkPlayer.name);
+			inven.RemoveInven(item.name);
 			Debug.Log("NPC가 사과를 받고 기뻐합니다.");
+			return true;
 		}
 		else
 		{
 			Debug.Log("아이템이 없습니다.");
+			return false;
 		}
 	}
 
